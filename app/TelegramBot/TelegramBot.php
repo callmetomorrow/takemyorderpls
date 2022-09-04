@@ -35,10 +35,7 @@ class TelegramBot {
         if(count($response) > 0) {
             $setReplyOptions = $this->handleUserMessageResponse($response);
             //info($setReplyOptions);
-        } else {}
-        
-        //https://tutorials.botsfloor.com/request-and-handle-phone-number-and-location-with-telegram-bot-api-e90004c0c87e
-        //https://stackoverflow.com/questions/66804203/telegram-bot-keyboard-button?rq=1
+        } 
     }
 
     private function baseURL($method, $params) {
