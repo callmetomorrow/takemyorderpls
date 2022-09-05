@@ -28,7 +28,7 @@ class TelegramBot {
 
     public function init($type, $options, $params) {
         $data = $this->sendRequest($type, $options, $params);
-        
+        info($data);
         $response = $data->object()->result;
         //info($response->toArray());
         if($type === 'SendMessage') return;
@@ -40,7 +40,7 @@ class TelegramBot {
 
     private function baseURL($method, $params) {
         $query = (!empty($params)) ? '?' . http_build_query($params) : '';
-
+    
         return implode( config('telegram') ) . '/' . $method . $query;
     }
 
