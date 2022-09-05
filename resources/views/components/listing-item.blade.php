@@ -1,6 +1,7 @@
 @props(['order', 'count'])
 @php
     $time = $order->created_at;
+    if($time) $time = $time->format('d-m-Y H:i:s');
     $phone = phonecode($order->phone);
     $userinfo = json_decode($order->userinfo);
     $sent = (boolval($order->sent)) ? 'Sent' : 'Not sent';
@@ -12,7 +13,7 @@
     </div> 
     
     <div class="time-row">
-      <b>{{ __('Time') }}:</b> {{ $time->format('d-m-Y H:i:s') }}
+      <b>{{ __('Time') }}:</b> {{ $time }}
     </div>
     
     <div class="phone-row">
