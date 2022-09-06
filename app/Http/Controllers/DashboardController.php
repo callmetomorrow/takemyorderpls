@@ -19,7 +19,7 @@ class DashboardController extends Controller
                 ? Dashboard::whereDate('created_at', '=', $date)->latest()->paginate(50) 
                 : Dashboard::latest()->paginate(50);
        
-        return view('dashboard', [
+        return view('dashboard.index', [
             'orders' => $orders,
             'date'   => $date,
         ]);
