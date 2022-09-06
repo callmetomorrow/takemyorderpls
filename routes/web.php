@@ -3,6 +3,7 @@
 use App\Http\Controllers\Dashboard\UsersController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,12 @@ Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('{date?}', [DashboardController::class, 'index'])
             ->where('date', '\d{4}-\d{2}-\d{2}')
             ->name('dashboard');
+
+    Route::get('migrate', function () {
+        Artisan::call('migrate');
+        session()->flash('success', 'Міграцію успішно застосовано');
+        return redirect()->route('users.index');
+    });
 });
 
 require __DIR__.'/auth.php';
