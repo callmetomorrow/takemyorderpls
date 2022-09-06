@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\OrdersController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\TelegramUpdatesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('/orders', [OrdersController::class, 'store']);
 Route::get('/orders', [OrdersController::class, 'index']);
+
+Route::post('/updates', TelegramUpdatesController::class);
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
